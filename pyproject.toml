@@ -3,8 +3,8 @@ requires = ["setuptools>=64", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "segment-geospatial"
-version = "0.12.6"
+name = "segment-geospatial-uni"
+version = "0.0.1"
 dynamic = [
     "dependencies",
 ]

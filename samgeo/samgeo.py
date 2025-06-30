@@ -6,10 +6,18 @@ import os
 import cv2
 import torch
 import numpy as np
-from segment_anything import sam_model_registry, SamAutomaticMaskGenerator, SamPredictor
+from segment_anything import sam_model_registry, SamPredictor
 
-from .common import *
+import sys
+import platform
+IS_SILICON_MAC = (sys.platform == "darwin" and platform.machine() == "arm64")
 
+if IS_SILICON_MAC:
+    from samgeo.custom_automatic_mask_generator import SamAutomaticMaskGenerator
+else:
+    from segment_anything import SamAutomaticMaskGenerator
+
+from samgeo.common import *
 
 class SamGeo:
     """The main class for segmenting geospatial data with the Segment Anything Model (SAM). See
